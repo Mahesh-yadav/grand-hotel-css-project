@@ -20,6 +20,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
 }
 
 .menu-icon{
@@ -32,14 +33,14 @@ body{
 
 .bar{
     width: 2.5rem;
-    height: .4rem;
+    height: .2rem;
     background-color: #222;
     margin-bottom: .6rem;
 }
 
 .bar-1, .bar-3{
     width: 1.8rem;
-    transition: width .3s;
+    transition: width .3s, transform .4s;
 }
 
 .bar-3{
@@ -48,6 +49,26 @@ body{
 
 .menu-icon:hover .bar-1, .menu-icon:hover .bar-3{
     width: 2.5rem;
+}
+
+.checkbox:checked ~ .sidebar .menu-icon{
+    border: solid .1rem transparent;
+}
+
+.checkbox:checked ~ .sidebar .bar-1{
+    width: 2.6rem;
+    transform: translate(0, 8px) rotate(-405deg);
+    transform-origin: center;
+}
+
+.checkbox:checked ~ .sidebar .bar-2{
+    opacity: 0;
+}
+
+.checkbox:checked ~ .sidebar .bar-3{
+    width: 2.6rem;
+    transform: translate(0, -8px) rotate(405deg);
+    transform-origin: center;
 }
 
 .social-links-list{
@@ -81,7 +102,7 @@ body{
 .navigation{
     position: fixed;
     top: 0;
-    left: 8rem;
+    left: -27rem;
     width: 35rem;
     height: 100vh;
     background: linear-gradient(to top, rgba(34, 32, 41, 1), rgba(34, 32, 41, .8)), url(../images/nav-bg.jpeg) center no-repeat;
@@ -90,6 +111,11 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    transition: left .8s cubic-bezier(1, 0, 0, 1);
+}
+
+.checkbox:checked ~ .navigation {
+    left: 8rem;
 }
 
 .navigation-heading{
